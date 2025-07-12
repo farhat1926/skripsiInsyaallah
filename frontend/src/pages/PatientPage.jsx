@@ -21,7 +21,7 @@ const AddFormCRUD = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("http://localhost:5001/api/patient/getAllPatient");
+        const { data } = await axiosInstance.get("/patient/getAllPatient");
         setDataPatient(data.data);
       } catch (error) {
         console.error(error);
