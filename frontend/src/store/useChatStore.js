@@ -61,27 +61,19 @@ export const useChatStore = create((set, get) => ({
   },
 
   sendMessage: async (messageData) => {
-  const { selectedUser, messages } = get();
-  const socket = useAuthStore.getState().socket;
-
-  if (!selectedUser) {
-    toast.error("No user selected");
-    return;
-  }
-
-  try {
-    const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
-    set({ messages: [...messages, res.data] });
-
-    // ⬇️ Tambahkan ini supaya realtime
-    if (socket) {
-      socket.emit("sendMessage", res.data); // kirim data ke server
+    const { selectedUser, messages } = get();
+    if (!selectedUser) {
+      toast.error("No user selected");
+      return;
     }
-  } catch (error) {
-    toast.error(error.response?.data?.message || "Failed to send message");
-  }
-},
 
+    try {
+      const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
+      set({ messages: [...messages, res.data] });
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to send message");
+    }
+  },
 
   subscribeToMessage: () => {
      const socket = useAuthStore.getState().socket;

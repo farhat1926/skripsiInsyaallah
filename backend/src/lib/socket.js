@@ -5,12 +5,14 @@ import express from 'express'
 const app = express()
 const server = http.createServer(app);
 
-const io = new Server (server,{
-    cors:{
-        origin:["https://skripsi-insyaallah.vercel.app"],
-
-    }
+const io = new Server(server, {
+  cors: {
+    origin: "https://skripsi-insyaallah.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
+
 
 app.set("io", io)
 //use to store online users
@@ -33,13 +35,5 @@ io.on("connection",(socket) =>{
         delete userSocketMap[userId]
         io.emit("getOnlineUsers" , Object.keys(userSocketMap))
     })
-    socket.on("sendMessage", (data) => {
-  const receiverSocketId = getReceiverSocketId(data.receiverId);
-
-  if (receiverSocketId) {
-    io.to(receiverSocketId).emit("newMessage", data);
-  }
-});
-
 })
 export { io, app, server }
