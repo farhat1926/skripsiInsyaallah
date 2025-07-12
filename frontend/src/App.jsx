@@ -18,35 +18,28 @@ import { useThemeStore } from "./store/useThemeStore";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-
 import AddFormCRUD from "./pages/PatientPage";
 import AddData from "./components/AddData";
-import EditData from "./components/UbahData"; // Pastikan ini sesuai dengan path yang benar
+import EditData from "./components/UbahData";
+import ProtectedRoute from "./components/ProtectedRoute"; // ⬅️ import di sini
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
   const { theme } = useThemeStore();
-    const subscribeToMessage = useChatStore((state) => state.subscribeToMessage);
+  const subscribeToMessage = useChatStore((state) => state.subscribeToMessage);
   const unSubscribeFromMessage = useChatStore((state) => state.unSubscribeFromMessage);
 
-  console.log({ onlineUsers });
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   useEffect(() => {
-  checkAuth();
-}, [checkAuth]);
-
-useEffect(() => {
-  if (!authUser) return; // Tunggu authUser tersedia
-
-  subscribeToMessage();
-
-  return () => {
-    unSubscribeFromMessage();
-  };
-}, [authUser]); // ✅ Trigger hanya ketika authUser tersedia
-
-
-  console.log({ authUser });
+    if (!authUser) return;
+    subscribeToMessage();
+    return () => {
+      unSubscribeFromMessage();
+    };
+  }, [authUser]);
 
   if (isCheckingAuth && !authUser)
     return (
@@ -57,23 +50,87 @@ useEffect(() => {
 
   return (
     <div data-theme={theme}>
-      
-      <Navbar />
+      <ToastContainer />
+      <Toaster />
+
+      {authUser && <Navbar />} {/* ✅ tampilkan navbar hanya jika login */}
 
       <Routes>
-        <Route path="/" element={authUser ? <MedicalUpPage /> : <Navigate to="/login" />} />
-        <Route path="/HomePage" element={authUser ? <HomePage /> : <Navigate to="/HomePage" />} />
-        <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/login" />} />
-        <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
-        <Route path="/patient" element={<AddFormCRUD />} />
-        <Route path="/addData" element={<AddData />} />
-        <Route path="/editData/:id" element={<EditData />} />
-        <Route path="/history" element={<HistoryPage />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <MedicalUpPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/HomePage"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <SettingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/patient"
+          element={
+            <ProtectedRoute>
+              <AddFormCRUD />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addData"
+          element={
+            <ProtectedRoute>
+              <AddData />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/editData/:id"
+          element={
+            <ProtectedRoute>
+              <EditData />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectedRoute>
+              <HistoryPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Route terbuka (tanpa login) */}
+        <Route
+          path="/login"
+          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
+        />
       </Routes>
-       <ToastContainer />
-      <Toaster />
     </div>
   );
 };
