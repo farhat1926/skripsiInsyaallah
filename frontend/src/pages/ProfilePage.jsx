@@ -30,10 +30,11 @@ const ProfilePage = () => {
           {/* avatar upload section */}
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
-              <img src={selectedImg || authUser.profilePic || "/avatar.png"} 
-              alt="Profile"
-              className="size-32 rounded-full object-cover border-4"
-              />
+              <img src={
+  selectedImg 
+    || (authUser.profilePic ? `${authUser.profilePic}?v=${Date.now()}` : "/avatar.png")
+}
+/>
               <label htmlFor="avatar-upload" 
               className={
                 `absolute bottom-0 right-0
