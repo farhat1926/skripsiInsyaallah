@@ -7,11 +7,14 @@ import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {
+  const [userType, setUserType] = useState("");
+  const [secretKey, setSecretKey] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
+    userType: "",
   });
 
   const { signup, isSigningUp } = useAuthStore();
@@ -28,10 +31,22 @@ const SignUpPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const success = validateForm()
+    if(userType =="Admin" && secretKey !== "perawat"){
+      e.preventDefault();
+      return toast.error("Invalid secret key")
+    } 
+    else if(userType === "karyawan" && secretKey !== "karyawan"){
+      e.preventDefault();
+      return toast.error("Invalid secret key")
+    }
+    else{
+      
+          e.preventDefault();
+          const success = validateForm()
+      
+          if(success===true) signup(formData)
+    }
 
-    if(success===true) signup(formData)
   };
 
   return (
@@ -54,6 +69,52 @@ const SignUpPage = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
+          <div>Register as:{" "}
+           <input type="radio" name="UserType" value="User" required checked={userType === "User"} onChange={(e) => {
+            setUserType(e.target.value);
+            setFormData({ ...formData, userType: e.target.value });
+            }}
+          />Pasien
+            <input
+              type="radio"
+              name="UserType"
+              value="Admin"
+              checked={userType === "Admin"}
+              required
+              onChange={(e) => {
+                setUserType(e.target.value);
+                setFormData({ ...formData, userType: e.target.value });
+              }}
+            /> Dokter
+             <input type="radio" name="UserType" value="karyawan"
+            checked={userType==="karyawan"} required
+              onChange={(e)=>{
+              setUserType(e.target.value);
+              setFormData({...formData,userType:e.target.value});
+              }}/> Karyawan
+
+          </div>
+          {userType == "Admin" || userType == "karyawan"? <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Secret Key</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <User className="size-5 text-base-content/40" />
+                </div>
+                <input
+                  type="text"
+                  className="input input-bordered w-full pl-10"
+                  placeholder="Secret Key"
+                 
+                  onChange={(e) =>
+                    setSecretKey(e.target.value)
+                  }
+                />
+              </div>
+            </div> :null }
+            
+            
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">Full Name</span>
@@ -134,7 +195,6 @@ const SignUpPage = () => {
         ):("Create Account")}
       </button>
           </form>
-
           <div className="text-center">
             <p className="text-base-content/60">
             already have an account?{" "}
@@ -147,8 +207,8 @@ const SignUpPage = () => {
       </div>
       {/* right side */}
         <AuthImagePattern
-        title="Join Our community"
-        subtitle = "Connect with friend, share moment, and stay in touch with your loves one"
+        title="Selamat Datang di Klinik Weiku"
+        subtitle = "silahkan konsultasikan keluhan anda kepada dokter kami yang sudah berpengalaman dalam bidangnya. Kami siap membantu anda dengan sepenuh hati."
         />
 
     </div>

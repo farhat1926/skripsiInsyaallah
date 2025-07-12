@@ -15,11 +15,15 @@ const userSchema = new mongoose.Schema(
             type:String,
             required:true,
             minlength:6,
-
         },
         profilePic:{
             type:String,
             default:"",
+        },
+        userType:{
+            type:String,
+            enum:["User","Admin","karyawan"],
+            default:"User"
         },
     },
     {timestamps:true}

@@ -3,8 +3,8 @@ import { THEMES } from "../constants"
 import { Send } from "lucide-react"
 
 const PREVIEW_MESSAGE = [
-  { id: 1, content: "Hey, how is it going?", isSent: false },
-  { id: 2, content: "I'm doing great, just working on some features.", isSent: true }
+  { id: 1, content: "Pak, saya ingin berkonsultasi", isSent: false },
+  { id: 2, content: "silahkan, baik silahakan tentang apa?", isSent: true }
 ]
 
 const SettingsPage = () => {
@@ -50,9 +50,9 @@ const SettingsPage = () => {
         <div className="rounded-xl border border-base-300 overflow-hidden bg-base-100 shadow-lg">
           <div className="p-4 bg-base-200">
             <div className="max-w-lg mx-auto">
-              {/* Chat UI */}
+              
               <div className="bg-base-100 rounded-xl shadow-sm overflow-hidden">
-                {/* Chat Header */}
+                
                 <div className="px-4 py-3 border-b border-base-300 bg-base-100 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-medium">
                     F
@@ -88,7 +88,7 @@ const SettingsPage = () => {
                       type="text"
                       className="input input-bordered flex-1 text-sm h-10"
                       placeholder="Type a message..."
-                      value="This is a preview"
+                      value="ini adalah contoh pesan"
                       readOnly
                     />
                     <button className="btn btn-primary h-10 min-h-0">

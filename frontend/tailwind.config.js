@@ -7,7 +7,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+       fontFamily: {
+        funky: ["'Bungee Spice'", "cursive"], // ← nama bebas
+      },
+      keyframes: {
+        wiggleX: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%":      { transform: "translateX(12px)" },   // geser kanan
+        },
+      },
+      animation: {
+        "wiggle-x": "wiggleX 2.5s ease-in-out infinite",
+      },
+    },
   },
   plugins: [daisyui],
   daisyui:{

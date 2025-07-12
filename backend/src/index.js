@@ -1,6 +1,8 @@
 import express from 'express'
 import authRoutes from "./routes/auth.route.js"
 import messageRoutes from "./routes/message.route.js"
+import patientRoutes from "./routes/patient.routes.js"
+import historyRoutes from "./routes/history.route.js"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import cors from 'cors'
@@ -22,8 +24,11 @@ app.use(cors({
 
 app.use("/api/auth",authRoutes)
 app.use("/api/messages",messageRoutes)
+app.use("/api/patient",patientRoutes)
+app.use("/api",historyRoutes)
+
 
 server.listen(PORT,()=>{
-    console.log(`running at https://localhost/${PORT}` )
+    console.log(`running at http://localhost/${PORT}` )
     connectDB()
 })

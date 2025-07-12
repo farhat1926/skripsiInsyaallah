@@ -12,7 +12,7 @@ const io = new Server (server,{
     }
 });
 
-
+app.set("io", io)
 //use to store online users
 const userSocketMap = {}
 export function getReceiverSocketId(userId) {

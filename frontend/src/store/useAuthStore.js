@@ -46,6 +46,7 @@ export const useAuthStore = create((set,get) => ({
         set({ isLoggingIn: true });
         try {
             const res = await axiosInstance.post("/auth/login", data);
+            console.log("LOGIN RESPONSE:", res.data); 
             set({ authUser: res.data });
             toast.success("Logged in successfully");
             
@@ -73,15 +74,20 @@ export const useAuthStore = create((set,get) => ({
     },
 
     logout: async () => {
-        try {
-            await axiosInstance.post("/auth/logout");
-            set({ authUser: null });
-            toast.success("Logout success");
-            get().disconnectSocket()
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Logout failed");
-        }
-    },
+    try {
+        await axiosInstance.post("/auth/logout");
+        set({ authUser: null });
+        toast.success("Logout success");
+
+        get().disconnectSocket();
+
+        // ⬇️ Tambahkan ini agar diarahkan ke halaman login
+        window.location.href = "/login";
+    } catch (error) {
+        toast.error(error.response?.data?.message || "Logout failed");
+    }
+},
+
 
     connectSocket: () => {
         const { authUser } = get();

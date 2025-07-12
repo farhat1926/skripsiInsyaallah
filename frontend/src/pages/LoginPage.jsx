@@ -6,17 +6,23 @@ import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
 
 
+
 const LoginPage = () => {
   const [showPassword,setShowPassword] = useState(false)
+  
   const [formData,setFormData] = useState({
     email:"",
     password:"",
+    userType:"User"
   })
   const {login,isLoggingIn} = useAuthStore()
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
     login(formData)
+    if(formData.userType === "Admin" && admin !== "admin123"){
+      return toast.error("Invalid secret key")
+    }
   }
 
   return (
@@ -30,9 +36,9 @@ const LoginPage = () => {
               <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <MessageSquare className="size-6 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold mt-2">Sign In</h1>
+              <h1 className="text-2xl font-bold mt-2">Log In</h1>
               <p className="text-base-content/60">
-                Get started with your free account
+                Selamat datang kembali, silahkan masuk ke akun anda
               </p>
             </div>
           </div>
@@ -101,7 +107,7 @@ const LoginPage = () => {
           </form>
           <div className="text-center">
             <p className="text-base-content/60">
-            not already have an account?{" "}
+            Belom Punya Akun? klik sini aja{" "}
             <Link to="/signup" className="link link-primary">
               Sign Up
             </Link>
@@ -111,8 +117,8 @@ const LoginPage = () => {
       </div>
       {/* right side */}
         <AuthImagePattern
-        title="Join Our community"
-        subtitle = "Connect with friend, share moment, and stay in touch with your loves one"
+        title="Selamat Datang di Klinik Weiku"
+        subtitle = "silahkan konsultasikan keluhan anda kepada dokter kami yang sudah berpengalaman dalam bidangnya. Kami siap membantu anda dengan sepenuh hati"
         />
 
     </div>
