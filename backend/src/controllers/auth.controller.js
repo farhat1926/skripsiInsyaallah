@@ -88,6 +88,7 @@ export const logout = (req, res) => {
 };
 
 export const updateProfile = async(req,res) =>{
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     try {
         const {profilePic} = req.body
         const userId = req.user._id
@@ -104,6 +105,7 @@ export const updateProfile = async(req,res) =>{
         res.status(500).json({message:"internal server error"})
     }
 }
+
 
 export const checkAuth = (req,res) =>{
     try {
