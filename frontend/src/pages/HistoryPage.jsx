@@ -11,7 +11,7 @@ const HistoryPage = () => {
     (async () => {
       try {
         const { data } = await axiosInstance.get("/history");
-        setHistory(data.data);             // backend: { success, data: [...] }
+        setHistory(data.data);            
       } catch (err) {
         toast.error("Gagal memuat riwayat");
         console.error(err);
