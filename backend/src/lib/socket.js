@@ -33,5 +33,13 @@ io.on("connection",(socket) =>{
         delete userSocketMap[userId]
         io.emit("getOnlineUsers" , Object.keys(userSocketMap))
     })
+    socket.on("sendMessage", (data) => {
+  const receiverSocketId = getReceiverSocketId(data.receiverId);
+
+  if (receiverSocketId) {
+    io.to(receiverSocketId).emit("newMessage", data);
+  }
+});
+
 })
 export { io, app, server }
