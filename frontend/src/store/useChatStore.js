@@ -76,10 +76,10 @@ export const useChatStore = create((set, get) => ({
   },
 
   subscribeToMessage: () => {
-     const socket = useAuthStore.getState().socket;
+  const socket = useAuthStore.getState().socket;
   if (!socket) return;
 
-  // Pastikan tidak dobel listener
+  // Hindari multiple listeners
   socket.off("newMessage");
 
   if (!audio) {
@@ -87,28 +87,31 @@ export const useChatStore = create((set, get) => ({
   }
 
   socket.on("newMessage", (newMessage) => {
-    const { selectedUser, messages, setUnreadForUser } = get();
+    const { selectedUser, setUnreadForUser } = get();
 
     const isFromCurrentChat =
       selectedUser &&
       (newMessage.senderId === selectedUser._id || newMessage.receiverId === selectedUser._id);
 
     if (isFromCurrentChat) {
-      set({ messages: [...messages, newMessage] });
+      // ✅ Pakai callback agar tidak stale
+      set((state) => ({
+        messages: [...state.messages, newMessage],
+      }));
     } else {
       setUnreadForUser(newMessage.senderId);
 
-      // ⬇️ Reset dan mainkan notifikasi
+      // 🔊 Mainkan notifikasi suara
       try {
-        audio.pause();           // hentikan dulu
-        audio.currentTime = 0;   // reset ke awal
-        audio.play();            // mainkan
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
       } catch (e) {
         console.error("Gagal memutar notifikasi:", e);
       }
     }
   });
-  },
+},
 
 
   unSubscribeFromMessage: () => {
