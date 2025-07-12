@@ -3,6 +3,7 @@ import { useNavigate,useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { axiosInstance } from "../lib/axios";
 
 
 const ubahData = () => {
@@ -40,7 +41,7 @@ const ubahData = () => {
   const updateData = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     try {
-      await axios.put(`http://localhost:5001/api/patient/editData/${id}`, { name, alamat, tgl, keluhan,gender });
+      await axiosInstance.put(`/patient/editData/${id}`, { name, alamat, tgl, keluhan,gender });
       toast.success("Data berhasil diubah");
       navigate("/patient");
     } catch (err) {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { axiosInstance } from "../lib/axios";
 
 const HistoryPage = () => {
   const [history, setHistory] = useState([]);
@@ -9,7 +10,7 @@ const HistoryPage = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("http://localhost:5001/api/history");
+        const { data } = await axiosInstance.get("/history");
         setHistory(data.data);             // backend: { success, data: [...] }
       } catch (err) {
         toast.error("Gagal memuat riwayat");

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export const axiosInstance = axios.create({
-    baseURL:"https://skripsiinsyaallah-production.up.railway.app/api",
+    baseURL:import.meta.env.VITE_API_BASE_URL,
     withCredentials:true
 })

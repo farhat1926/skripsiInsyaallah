@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
+import { axiosInstance } from "../lib/axios";
 
 const AddData = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const AddData = () => {
 
  const getData = async () => {
     try {
-      const {data} = await axios.get('http://localhost:5001/api/patient/getAllPatient');
+      const {data} = await axiosInstance.get('/patient/getAllPatient');
       console.log(data.data);
       setDataPatient(data.data);
     } catch (error) {
@@ -30,7 +31,7 @@ const AddData = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await axios.post('http://localhost:5001/api/patient/addPatient', {
+    const response = await axiosInstance.post('/patient/addPatient', {
       name,
       tgl,
       alamat,

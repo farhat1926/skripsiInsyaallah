@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuthStore } from "../store/useAuthStore";
 import { io } from "socket.io-client";
+import { axiosInstance } from "../lib/axios";
 
 const socket = io("http://localhost:5001");
 
@@ -50,7 +51,7 @@ const AddFormCRUD = () => {
 
   const deleteData = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/patient/deleteData/${id}`);
+      await axiosInstance.delete(`/patient/deleteData/${id}`);
       toast.success("Data berhasil dihapus");
     } catch {
       toast.error("Gagal menghapus data");
