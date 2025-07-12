@@ -18,7 +18,7 @@ app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true, limit: "100mb" })); 
 app.use(cookieParser())
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://skripsi-insyaallah.vercel.app/",
     credentials:true
 }))
 
