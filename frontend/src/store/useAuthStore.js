@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { axiosInstance } from '../lib/axios.js' 
 import toast from 'react-hot-toast'
 import {io} from 'socket.io-client'
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = "https://skripsiinsyaallah-production.up.railway.app/api"
 
@@ -82,7 +83,10 @@ export const useAuthStore = create((set,get) => ({
         get().disconnectSocket();
 
         // ⬇️ Tambahkan ini agar diarahkan ke halaman login
-        window.location.href = "/login";
+        const navigate = useNavigate();
+
+// Dalam fungsi logout
+navigate("/login");
     } catch (error) {
         toast.error(error.response?.data?.message || "Logout failed");
     }

@@ -82,7 +82,7 @@ export const logout = (req, res) => {
     res.clearCookie("jwt", {
       httpOnly: true,
       sameSite: "none",
-      secure: process.env.NODE_ENV !== "development",
+      secure: process.env.NODE_ENV !== "production",
     });
     res.status(200).json({ message: "logged out successfully" });
   } catch (error) {
