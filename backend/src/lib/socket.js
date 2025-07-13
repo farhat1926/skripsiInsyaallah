@@ -26,18 +26,23 @@ export function getReceiverSocketId(userId) {
 
 io.on("connection",(socket) =>{
     console.log("A user connected", socket.id)
-    
-    const userId = socket.handshake.auth.userId
-    if(userId) userSocketMap[userId] = socket.id
-    console.log("User ID from socket handshake:", socket.handshake.auth.userId  );
+    console.log("Handshake auth data:", socket.handshake.auth); // 🔍 lihat ini
 
-    //send to all connect client
-    io.emit("getOnlineUsers" , Object.keys(userSocketMap))
-    
-    socket.on("disconnect",() =>{
-        console.log("A user disconnected", socket.id)
-        delete userSocketMap[userId]
-        io.emit("getOnlineUsers" , Object.keys(userSocketMap))
-    })
-})
+    const userId = socket.handshake.auth?.userId;
+    if (userId) {
+        userSocketMap[userId] = socket.id;
+        console.log("User ID from socket handshake:", userId);
+    } else {
+        console.warn("No userId found in socket handshake!");
+    }
+
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
+
+    socket.on("disconnect", () => {
+        console.log("A user disconnected", socket.id);
+        delete userSocketMap[userId];
+        io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    });
+});
+
 export { io, app, server }

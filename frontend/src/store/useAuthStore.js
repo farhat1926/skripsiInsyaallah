@@ -5,13 +5,9 @@ import {io} from 'socket.io-client'
 import { useNavigate } from 'react-router-dom';
 
 const isDev = import.meta.env.DEV;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const SOCKET_BASE_URL = import.meta.env.VITE_SOCKET_BASE_URL;
 
-
-
-const BASE_URL = isDev
-  ? "http://localhost:5001"
-  : "https://skripsiinsyaallah-production.up.railway.app/api";
 
 export const useAuthStore = create((set,get) => ({
     authUser: null,
@@ -92,10 +88,10 @@ export const useAuthStore = create((set,get) => ({
     toast.error(error.response?.data?.message || "Logout failed");
   }
 },
-
-    connectSocket: () => {
+connectSocket: () => {
   const { authUser } = get();
   if (!authUser || get().socket?.connected) return;
+    console.log("authUser di connectSocket:", authUser); // 🔍 CEK DI SINI
 
   console.log("Connecting socket with userId:", authUser?._id);
   

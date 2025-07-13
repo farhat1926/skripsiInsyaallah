@@ -61,7 +61,7 @@ const MessageInput = () => {
         <div className='flex-1 flex gap-2 '>
           <input type="text" className='w-full input input-bordered rounded-lg input-sm sm:input-md' placeholder='type a message ....' value={text} onChange={(e) => setText(e.target.value)} />
           <input type='file' accept='image/*' className='hidden' ref={fileInputRef} onChange={handleImageChange} />
-          <button type='button' className={`hidden sm:flex btn btn-circle ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`} onClick={() => fileInputRef.current?.click()} >
+          <button type='button' className={` sm:flex btn btn-circle ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`} onClick={() => fileInputRef.current?.click()} >
             <Image size={20} />
           </button>
         </div>
