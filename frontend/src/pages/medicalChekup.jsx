@@ -55,12 +55,12 @@ return (
     <div className="grid md:grid-cols-3 gap-12">
       {[
         {
-          image: "/dirumah.png",
+          image: "/perawatan.jpeg",
           title: "Perawatan di Rumah",
           desc: "Dapatkan akses ke pakar tepercaya di setiap bidang medis—kardiologi, dermatologi, ortopedi, dan banyak lagi.",
         },
         {
-          image: "/bed.jpg",
+          image: "/dukungan.jpeg",
           title: "Dukungan Pelanggan",
           desc: "Tim Dukungan Pelanggan kami yang berdedikasi siap membantu Anda dengan pertanyaan atau masalah apa pun.",
         },
