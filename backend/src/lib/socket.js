@@ -8,7 +8,6 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
-      "http://localhost:5173", // atau port dev kamu
       "https://skripsi-insyaallah.vercel.app"
     ],
     methods: ["GET", "POST"],
@@ -30,7 +29,7 @@ io.on("connection",(socket) =>{
     
     const userId = socket.handshake.auth.userId
     if(userId) userSocketMap[userId] = socket.id
-    console.log("User ID from socket handshake:", socket.handshake);
+    console.log("User ID from socket handshake:", socket.handshake.auth.userId  );
 
     //send to all connect client
     io.emit("getOnlineUsers" , Object.keys(userSocketMap))
