@@ -54,6 +54,7 @@ export const sendMessage = async (req, res) => {
         const { text, image } = req.body;
         const { id: receiverId } = req.params;
         const senderId = req.user._id;
+        
 
         const sender = await User.findById(senderId);
         const receiver = await User.findById(receiverId);

@@ -88,6 +88,7 @@ export const useChatStore = create((set, get) => ({
 
   socket.on("newMessage", (newMessage) => {
     const { selectedUser, setUnreadForUser } = get();
+    console.log("Real-time message received:", message);
 
     const isFromCurrentChat =
       selectedUser &&

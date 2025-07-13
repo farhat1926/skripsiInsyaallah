@@ -4,7 +4,14 @@ import toast from 'react-hot-toast'
 import {io} from 'socket.io-client'
 import { useNavigate } from 'react-router-dom';
 
-const BASE_URL = "https://skripsiinsyaallah-production.up.railway.app/api"
+const isDev = import.meta.env.DEV;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const SOCKET_BASE_URL = import.meta.env.VITE_SOCKET_BASE_URL;
+
+
+const BASE_URL = isDev
+  ? "http://localhost:5001"
+  : "https://skripsiinsyaallah-production.up.railway.app/api";
 
 export const useAuthStore = create((set,get) => ({
     authUser: null,
@@ -89,11 +96,15 @@ export const useAuthStore = create((set,get) => ({
     connectSocket: () => {
         const { authUser } = get();
         if (!authUser || get().socket?.connected) return;
-        const socket = io(BASE_URL, {
-        auth: { userId: authUser._id },
-        transports: ['websocket'],
-        withCredentials: true,
-        });
+        console.log("Connecting socket with userId:", authUser?._id);
+       const socket = io(SOCKET_BASE_URL, {
+  auth: { userId: authUser._id },
+  transports: ['websocket'],
+  withCredentials: true,
+  path: '/socket.io',
+});
+
+
     
         socket.on("connect", () => {
             console.log("Connected to socket server:", socket.id);
@@ -106,6 +117,7 @@ export const useAuthStore = create((set,get) => ({
         set({ socket });
 
         socket.on("getOnlineUsers",(userIds) =>{
+            console.log("Online users:", userIds);
             set({onlineUsers:userIds})
         })
     },

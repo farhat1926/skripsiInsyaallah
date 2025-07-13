@@ -7,11 +7,15 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://skripsi-insyaallah.vercel.app",
+    origin: [
+      "http://localhost:5173", // atau port dev kamu
+      "https://skripsi-insyaallah.vercel.app"
+    ],
     methods: ["GET", "POST"],
     credentials: true
   }
 });
+
 
 
 app.set("io", io)
@@ -23,9 +27,10 @@ export function getReceiverSocketId(userId) {
 
 io.on("connection",(socket) =>{
     console.log("A user connected", socket.id)
-
+    
     const userId = socket.handshake.auth.userId
     if(userId) userSocketMap[userId] = socket.id
+    console.log("User ID from socket handshake:", socket.handshake);
 
     //send to all connect client
     io.emit("getOnlineUsers" , Object.keys(userSocketMap))
