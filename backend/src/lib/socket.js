@@ -24,7 +24,7 @@ export function getReceiverSocketId(userId) {
 io.on("connection",(socket) =>{
     console.log("A user connected", socket.id)
 
-    const userId = socket.handshake.query.userId
+    const userId = socket.handshake.auth.userId
     if(userId) userSocketMap[userId] = socket.id
 
     //send to all connect client
