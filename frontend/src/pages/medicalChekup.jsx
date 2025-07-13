@@ -98,7 +98,7 @@ return (
     {[
       {
         nama: "Khitan",
-        gambar: "/bocil.jpeg",
+        gambar: "/sunat.png",
         deskripsi: "Pelayanan khitan dengan metode modern dan minim rasa sakit, cocok untuk semua usia.",
       },
       {
@@ -113,7 +113,7 @@ return (
       },
       {
         nama: "Cek Darah",
-        gambar: "/gula.jpeg",
+        gambar: "/cek_darah.jpg",
         deskripsi: "Pemeriksaan darah lengkap untuk deteksi dini berbagai kondisi kesehatan.",
       },
     ].map((layanan) => (
