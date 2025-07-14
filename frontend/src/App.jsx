@@ -47,6 +47,11 @@ useEffect(() => {
 
 
   console.log({ authUser });
+  useEffect(() => {
+  if (!authUser && !isCheckingAuth) {
+    window.location.href("/login"); // Pastikan `navigate` dari useNavigate()
+  }
+}, [authUser, isCheckingAuth]);
 
   if (isCheckingAuth && !authUser)
     return (
