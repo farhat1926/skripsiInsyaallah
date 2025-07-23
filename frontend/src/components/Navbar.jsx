@@ -45,29 +45,36 @@ export default function Navbar() {
         )}
 
         {/* Right Section */}
-        <nav className="hidden lg:flex items-center gap-3">
-          {authUser ? (
-            <>
-              {filtered.map(({ path, label, icon: Icon }) => (
-                <Link key={path} to={path} className="btn btn-sm gap-2">
-                  <Icon className="size-4" />
-                  <span>{label}</span>
-                </Link>
-              ))}
-              <button onClick={logout} className="flex items-center gap-2">
-                <LogOut className="size-5" />
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login" className="btn btn-sm btn-outline">
-                Login
-              </Link>
-              
-            </>
-          )}
-        </nav>
+        <nav className="hidden lg:flex items-center gap-6">
+  {authUser ? (
+    <>
+      {filtered.map(({ path, label, icon: Icon }) => (
+        <Link
+          key={path}
+          to={path}
+          className="flex items-center gap-2 text-sm font-medium text-base-content hover:underline underline-offset-4 transition-all"
+        >
+          <Icon className="size-4" />
+          <span>{label}</span>
+        </Link>
+      ))}
+      <button
+        onClick={logout}
+        className="flex items-center gap-2 text-sm font-medium text-base-content hover:underline underline-offset-4 transition-all"
+      >
+        <LogOut className="size-5" />
+        Logout
+      </button>
+    </>
+  ) : (
+    <>
+      <Link to="/login" className="text-sm font-medium text-base-content hover:underline underline-offset-4 transition-all">
+        Login
+      </Link>
+    </>
+  )}
+</nav>
+
 
         {/* Burger Button */}
         <button

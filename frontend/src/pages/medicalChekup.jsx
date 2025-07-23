@@ -123,7 +123,7 @@ return (
     ].map((layanan) => (
       <div
         key={layanan.nama}
-        className="flex flex-col items-center text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+        className="flex flex-col items-center text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
       >
         <img
           src={layanan.gambar}
@@ -140,8 +140,9 @@ return (
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
         <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
-        <div className="overflow-x-auto px-4 py-2">
-  <div className="flex gap-4 w-max">
+       <div className="overflow-x-auto flex justify-center">
+  <div className="flex gap-6 w-max px-4 py-2">
+
 
             {[
               {
