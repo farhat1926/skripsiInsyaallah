@@ -98,12 +98,12 @@ return (
     {[
       {
         nama: "Khitan",
-        gambar: "/sunat.png",
+        gambar: "/khitan.png",
         deskripsi: "Pelayanan khitan dengan metode modern dan minim rasa sakit, cocok untuk semua usia.",
       },
       {
         nama: "Medikasi Luka",
-        gambar: "/rik.jpg",
+        gambar: "/medikasiluka.jpg",
         deskripsi: "Perawatan luka ringan hingga berat dengan prosedur yang aman dan steril.",
       },
       {
@@ -113,8 +113,18 @@ return (
       },
       {
         nama: "Cek Darah",
-        gambar: "/cek_darah.jpg",
+        gambar: "/cekdarah.jpg",
         deskripsi: "Pemeriksaan darah lengkap untuk deteksi dini berbagai kondisi kesehatan.",
+      },
+      {
+        nama: "Pemeriksaan Umum",
+        gambar: "/konsultasi.png",
+        deskripsi: "siap dan sedia untuk pemeriksaan kesehatan umum, termasuk konsultasi dokter.",
+      },
+      {
+        nama: "home Care",
+        gambar: "/pemeriksaan.jpeg",
+        deskripsi: "siap melayani perawatan kesehatan di rumah bagi pasien yang membutuhkan.",
       },
     ].map((layanan) => (
       <div
@@ -256,9 +266,8 @@ return (
   <div className="mt-8 grid md:grid-cols-2 gap-8 items-start">
     {/* Kiri: Tulisan */}
     <div>
-      <p className="text-sm text-left">
+      <p className="text-sm text-left pl-4">
         Jadilah bagian dari keluarga besar Klinik Weiku. Kami berkomitmen untuk menjadi tempat terbaik bagi kesehatan Anda dan keluarga. Dengan pelayanan yang ramah, tenaga medis yang profesional, dan fasilitas yang nyaman, kami akan selalu melayani Anda sepenuh hati, dengan tulus dan penuh perhatian. Kepuasan dan kesembuhan Anda adalah prioritas utama kami. Karena di Klinik Weiku, kesehatan Anda adalah misi kami.
-        
       </p>
     </div>
 
@@ -269,8 +278,8 @@ return (
         <ul className="space-y-1">
           <li>Khitan</li>
           <li>Medikasi Luka</li>
-          <li>Splinting</li>
-          <li>GJP</li>
+          <li>Khitan</li>
+          <li>Cek darah</li>
           <li>Home Care</li>
           <li>Pemeriksaan umum</li>
         </ul>

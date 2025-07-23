@@ -118,9 +118,6 @@ export default function Navbar() {
                 <Link to="/login" onClick={() => setOpen(false)} className="btn btn-sm btn-outline">
                   Login
                 </Link>
-                <Link to="/signup" onClick={() => setOpen(false)} className="btn btn-sm btn-primary">
-                  Register
-                </Link>
               </>
             )}
           </div>
