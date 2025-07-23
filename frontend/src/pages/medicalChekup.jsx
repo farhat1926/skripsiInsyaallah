@@ -8,7 +8,7 @@ return (
    <section
   className="p-8 mt-10 bg-cover bg-center bg-fixed relative min-h-[600px] flex items-center"
   style={{
-    
+    backgroundImage: "url('/sa.jpg')",
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -33,13 +33,7 @@ return (
     </div>
 
     {/* Image Side */}
-    <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
-      <img
-        src="/home.png"
-        alt="Dokter"
-        className="w-72 h-96 object-cover rounded-2xl shadow-2xl hover:scale-105 transition duration-500 ease-in-out"
-      />
-    </div>
+    
   </div>
     </section>
 
