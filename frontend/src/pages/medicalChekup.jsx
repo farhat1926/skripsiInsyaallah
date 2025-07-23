@@ -141,7 +141,7 @@ return (
       <section className="p-8 bg-primary/5">
         <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
        <div className="overflow-x-auto flex justify-center">
-  <div className="flex gap-6 w-max px-4 py-2">
+      <div className="flex gap-6 w-max px-4 py-2">
 
 
             {[
@@ -169,7 +169,7 @@ return (
             ].map((dokter, index) => (
               <div
                 key={index}
-                className=" min-w-[250px]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
+                className="w-8 min-w-[160px]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
               >
                 <img
                   src={dokter.foto}
