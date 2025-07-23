@@ -64,9 +64,7 @@ export default function Navbar() {
               <Link to="/login" className="btn btn-sm btn-outline">
                 Login
               </Link>
-              <Link to="/register" className="btn btn-sm btn-primary">
-                Register
-              </Link>
+              
             </>
           )}
         </nav>
@@ -118,6 +116,7 @@ export default function Navbar() {
                 <Link to="/login" onClick={() => setOpen(false)} className="btn btn-sm btn-outline">
                   Login
                 </Link>
+                
               </>
             )}
           </div>
