@@ -8,7 +8,7 @@ return (
    <section
   className="p-8 mt-10 bg-cover bg-center bg-fixed relative min-h-[600px] flex items-center"
   style={{
-    backgroundImage: "url('/sa.jpg')",
+    
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -27,8 +27,7 @@ return (
       </h2>
      <p className="text-white/90 text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
   Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
-  Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda, mulai dari pemeriksaan umum,
-  konsultasi dokter, hingga layanan laboratorium dan farmasi.
+  Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda.
   <br />
 </p>
     </div>
@@ -92,10 +91,9 @@ return (
 
 
       {/* Layanan Kami */}
-     <section className="p-8 text-center">
+      <section className="p-8 text-center">
   <h2 className="text-2xl font-bold mb-8">Layanan Kami</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
-
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
     {[
       {
         nama: "Khitan",
@@ -147,7 +145,8 @@ return (
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
         <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 py-2">
+        <div className="overflow-x-auto flex justify-center">
+          <div className="flex gap-6 w-max px-4 py-2">
             {[
               {
                 nama: "dr. Salsabila Ramadhani",
@@ -185,7 +184,8 @@ return (
                 <p className="mt-3 text-sm  text-center">{dokter.deskripsi}</p>
               </div>
             ))}
-            </div>
+          </div>
+        </div>
       </section>
 
       {/* Jam Buka */}
