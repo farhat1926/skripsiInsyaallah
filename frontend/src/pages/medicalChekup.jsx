@@ -85,9 +85,10 @@ return (
 
 
       {/* Layanan Kami */}
-      <section className="p-8 text-center">
-  <h2 className="text-2xl font-bold mb-8">Layanan Kami</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="py-12 px-4 bg-white text-center">
+  <h2 className="text-3xl font-bold mb-8 text-primary">Layanan Kami</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
     {[
       {
         nama: "Khitan",
@@ -122,14 +123,14 @@ return (
     ].map((layanan) => (
       <div
         key={layanan.nama}
-        className="flex flex-col items-center  p-4 rounded-xl shadow hover:shadow-lg transition duration-300"
+        className="flex flex-col items-center text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
       >
         <img
           src={layanan.gambar}
           alt={layanan.nama}
           className="w-full h-40 object-cover rounded-md mb-4"
         />
-        <h4 className="text-base font-semibold mb-1">{layanan.nama}</h4>
+        <h4 className="text-base font-semibold mb-1 text-primary">{layanan.nama}</h4>
         <p className="text-sm ">{layanan.deskripsi}</p>
       </div>
     ))}
@@ -139,8 +140,9 @@ return (
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
         <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
-        <div className="overflow-x-auto flex justify-center">
-          <div className="flex gap-6 w-max px-4 py-2">
+        <div className="overflow-x-auto px-4 py-2">
+  <div className="flex gap-4 w-max">
+
             {[
               {
                 nama: "dr. Salsabila Ramadhani",
@@ -166,7 +168,7 @@ return (
             ].map((dokter, index) => (
               <div
                 key={index}
-                className="w-80 min-w-[18rem]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
+                className=" min-w-[250px]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
               >
                 <img
                   src={dokter.foto}
