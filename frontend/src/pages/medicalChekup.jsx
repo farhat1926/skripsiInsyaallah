@@ -139,51 +139,52 @@ return (
 
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
-        <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
-       <div className="overflow-x-auto flex justify-center">
-      <div className="flex gap-6 w-max px-4 py-2">
+  <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
 
-
-            {[
-              {
-                nama: "dr. Salsabila Ramadhani",
-                spesialis: "Dokter Umum",
-                deskripsi:
-                  "Berpengalaman lebih dari 10 tahun dalam bidang pelayanan kesehatan umum dan pengobatan keluarga.",
-                foto: "/avatar.png",
-              },
-              {
-                nama: "Uchro Wianto",
-                spesialis: "Spesialis Akupuntur",
-                deskripsi:
-                  "Menggabungkan pendekatan modern dan tradisional dalam terapi akupuntur untuk hasil yang maksimal.",
-                foto: "/bapak.jpg",
-              },
-              {
-                nama: "Sri Mulyati",
-                spesialis: "Spesialis Luka & cek darah",
-                deskripsi:
-                  "Ahli dalam penanganan luka dan prosedur pada pengecekan darah",
-                foto: "/ibu.jpg",
-              },
-            ].map((dokter, index) => (
-              <div
-                key={index}
-                className="w-8 min-w-[160px]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
-              >
-                <img
-                  src={dokter.foto}
-                  alt={dokter.nama}
-                  className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-primary/30 mb-4"
-                />
-                <h3 className="text-lg font-bold text-center">{dokter.nama}</h3>
-                <p className="text-sm text-center ">{dokter.spesialis}</p>
-                <p className="mt-3 text-sm  text-center">{dokter.deskripsi}</p>
-              </div>
-            ))}
-          </div>
+  {/* Scroll horizontal di mobile, tampil normal di desktop */}
+  <div className="overflow-x-auto lg:overflow-visible">
+    <div className="flex lg:justify-center gap-6 w-max lg:w-full px-4 py-2">
+      {[
+        {
+          nama: "dr. Salsabila Ramadhani",
+          spesialis: "Dokter Umum",
+          deskripsi:
+            "Berpengalaman lebih dari 10 tahun dalam bidang pelayanan kesehatan umum dan pengobatan keluarga.",
+          foto: "/avatar.png",
+        },
+        {
+          nama: "Uchro Wianto",
+          spesialis: "Spesialis Akupuntur",
+          deskripsi:
+            "Menggabungkan pendekatan modern dan tradisional dalam terapi akupuntur untuk hasil yang maksimal.",
+          foto: "/bapak.jpg",
+        },
+        {
+          nama: "Sri Mulyati",
+          spesialis: "Spesialis Luka & cek darah",
+          deskripsi:
+            "Ahli dalam penanganan luka dan prosedur pada pengecekan darah",
+          foto: "/ibu.jpg",
+        },
+      ].map((dokter, index) => (
+        <div
+          key={index}
+          className="w-[300px] min-w-[280px] rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0 bg-white"
+        >
+          <img
+            src={dokter.foto}
+            alt={dokter.nama}
+            className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-primary/30 mb-4"
+          />
+          <h3 className="text-lg font-bold text-center">{dokter.nama}</h3>
+          <p className="text-sm text-center text-primary">{dokter.spesialis}</p>
+          <p className="mt-3 text-sm text-center text-gray-700">{dokter.deskripsi}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Jam Buka */}
       <section className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 text-center text-sm font-semibold tracking-wide rounded-xl shadow-inner">
