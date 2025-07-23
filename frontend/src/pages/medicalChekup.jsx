@@ -146,26 +146,47 @@ return (
 
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
-  <h2 className="text-2xl font-bold text-center mb-6">Karyawan Kami</h2>
-  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 py-2">
-    {[/* dokter list */].map((dokter, index) => (
-      <div
-        key={index}
-        className="w-full rounded-xl shadow-lg hover:shadow-xl transition-all p-6"
-      >
-        <img
-          src={dokter.foto}
-          alt={dokter.nama}
-          className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-primary/30 mb-4"
-        />
-        <h3 className="text-lg font-bold text-center">{dokter.nama}</h3>
-        <p className="text-sm text-center">{dokter.spesialis}</p>
-        <p className="mt-3 text-sm text-center">{dokter.deskripsi}</p>
-      </div>
-    ))}
-  </div>
-</section>
-
+        <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 py-2">
+            {[
+              {
+                nama: "dr. Salsabila Ramadhani",
+                spesialis: "Dokter Umum",
+                deskripsi:
+                  "Berpengalaman lebih dari 10 tahun dalam bidang pelayanan kesehatan umum dan pengobatan keluarga.",
+                foto: "/avatar.png",
+              },
+              {
+                nama: "Uchro Wianto",
+                spesialis: "Spesialis Akupuntur",
+                deskripsi:
+                  "Menggabungkan pendekatan modern dan tradisional dalam terapi akupuntur untuk hasil yang maksimal.",
+                foto: "/bapak.jpg",
+              },
+              {
+                nama: "Sri Mulyati",
+                spesialis: "Spesialis Luka & cek darah",
+                deskripsi:
+                  "Ahli dalam penanganan luka dan prosedur pada pengecekan darah",
+                foto: "/ibu.jpg",
+              },
+            ].map((dokter, index) => (
+              <div
+                key={index}
+                className="w-80 min-w-[18rem]  rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0"
+              >
+                <img
+                  src={dokter.foto}
+                  alt={dokter.nama}
+                  className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-primary/30 mb-4"
+                />
+                <h3 className="text-lg font-bold text-center">{dokter.nama}</h3>
+                <p className="text-sm text-center ">{dokter.spesialis}</p>
+                <p className="mt-3 text-sm  text-center">{dokter.deskripsi}</p>
+              </div>
+            ))}
+            </div>
+      </section>
 
       {/* Jam Buka */}
       <section className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 text-center text-sm font-semibold tracking-wide rounded-xl shadow-inner">
@@ -245,7 +266,7 @@ return (
     {/* Kiri: Tulisan */}
     <div>
       <p className="text-sm text-left pl-10">
-        Jadilah bagian dari keluarga besar Klinik Weiku. Kami berkomitmen untuk menjadi tempat terbaik bagi kesehatan Anda dan keluarga. Dengan pelayanan yang ramah, tenaga medis yang profesional, dan fasilitas yang nyaman, kami akan selalu melayani Anda sepenuh hati, dengan tulus dan penuh perhatian. Kepuasan dan kesembuhan Anda adalah prioritas utama kami. Karena di Klinik Weiku, kesehatan Anda adalah misi kami.
+        Jadilah bagian dari keluarga besar Klinik Weiku. Kami berkomitmen untuk menjadi tempat terbaik bagi kesehatan Anda dan keluarga. Dengan pelayanan yang ramah, tenaga medis yang profesional, dan fasilitas yang nyaman.
       </p>
     </div>
 
