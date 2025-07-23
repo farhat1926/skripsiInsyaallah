@@ -60,18 +60,26 @@ useEffect(() => {
       
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={authUser ? <MedicalUpPage /> : <Navigate to="/login" />} />
-        <Route path="/HomePage" element={authUser ? <HomePage /> : <Navigate to="/HomePage" />} />
-        <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/login" />} />
-        <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
-        <Route path="/patient" element={<AddFormCRUD />} />
-        <Route path="/addData" element={<AddData />} />
-        <Route path="/editData/:id" element={<EditData />} />
-        <Route path="/history" element={<HistoryPage />} />
-      </Routes>
+     <Routes>
+  {/* Home page bisa diakses semua orang */}
+  <Route path="/" element={<MedicalUpPage />} />
+
+  {/* Chat page hanya untuk yang sudah login */}
+  <Route path="/HomePage" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
+
+  {/* Auth routes */}
+  <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
+  <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
+
+  {/* Hanya user login yang bisa akses */}
+  <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/login" />} />
+  <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
+  <Route path="/patient" element={authUser ? <AddFormCRUD /> : <Navigate to="/login" />} />
+  <Route path="/addData" element={authUser ? <AddData /> : <Navigate to="/login" />} />
+  <Route path="/editData/:id" element={authUser ? <EditData /> : <Navigate to="/login" />} />
+  <Route path="/history" element={authUser ? <HistoryPage /> : <Navigate to="/login" />} />
+</Routes>
+
        <ToastContainer />
       <Toaster />
     </div>
