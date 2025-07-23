@@ -108,7 +108,7 @@ return (
       },
       {
         nama: "Akupuntur",
-        gambar: "/alat.jpg",
+        gambar: "/akupuntur.jpeg",
         deskripsi: "Terapi akupuntur tradisional yang membantu memperbaiki sirkulasi dan meredakan nyeri.",
       },
       {
@@ -118,7 +118,7 @@ return (
       },
       {
         nama: "Pemeriksaan Umum",
-        gambar: "/konsultasi.png",
+        gambar: "/kosultasi.png",
         deskripsi: "siap dan sedia untuk pemeriksaan kesehatan umum, termasuk konsultasi dokter.",
       },
       {
@@ -266,7 +266,7 @@ return (
   <div className="mt-8 grid md:grid-cols-2 gap-8 items-start">
     {/* Kiri: Tulisan */}
     <div>
-      <p className="text-sm text-left pl-4">
+      <p className="text-sm text-left pl-10">
         Jadilah bagian dari keluarga besar Klinik Weiku. Kami berkomitmen untuk menjadi tempat terbaik bagi kesehatan Anda dan keluarga. Dengan pelayanan yang ramah, tenaga medis yang profesional, dan fasilitas yang nyaman, kami akan selalu melayani Anda sepenuh hati, dengan tulus dan penuh perhatian. Kepuasan dan kesembuhan Anda adalah prioritas utama kami. Karena di Klinik Weiku, kesehatan Anda adalah misi kami.
       </p>
     </div>
