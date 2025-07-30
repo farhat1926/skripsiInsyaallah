@@ -2,6 +2,9 @@ import React, {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
 export default function MedicalUpPage() {
 
+  const [animate, setAnimate] = useState(false);
+
+
 useEffect(() => {
   const timer = setTimeout(() => setAnimate(true), 100); // Delay animasi
   return () => clearTimeout(timer);
