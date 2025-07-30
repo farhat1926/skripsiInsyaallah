@@ -7,7 +7,7 @@ export const useThemeStore = create((set) =>({
 
     setTheme:(theme) =>{
         if(!VALID_THEMES.includes(theme)) return
-        // localStorage.setItem("chat-theme",theme)
-        // set({theme})
+        localStorage.setItem("chat-theme",theme)
+        set({theme})
     }
 }))
