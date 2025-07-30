@@ -28,14 +28,14 @@ return (
 
   {/* Konten */}
   <div
-  className={`text-center md:text-left md:w-1/2 text-white px-4 transform transition-all duration-1000 ease-out ${
+  className={`text-center md:text-left md:w-1/2  px-4 transform transition-all duration-1000 ease-out ${
     animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
   }`}
 >
   <h2 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 drop-shadow-md">
     Selamat Datang di <br /> Klinik Kecantikan Weiku
   </h2>
-  <p className="text-white/90 text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
+  <p className=" text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
     Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
     Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda
   </p>
@@ -45,7 +45,11 @@ return (
 
       {/* Why Choose Us */}
       <section className="p-8 text-center ">
-  <div className="max-w-6xl mx-auto">
+         <div
+  className={`max-w-6xl mx-auto  transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
     <h3 className="text-lg font-semibold text-primary tracking-wide uppercase">Medical Checkup</h3>
     <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-12 ">
       Mengapa Memilih Kami untuk Perawatan Kesehatan Anda?
@@ -91,7 +95,7 @@ return (
 
 
       {/* Layanan Kami */}
-      <section className="py-12 px-4 bg-white text-center">
+      <section className="py-12 px-4  text-center">
   <h2 className="text-3xl font-bold mb-8 text-primary">Layanan Kami</h2>
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
 
@@ -175,7 +179,7 @@ return (
       ].map((dokter, index) => (
         <div
           key={index}
-          className="w-[300px] min-w-[280px] rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0 bg-white"
+          className="w-[300px] min-w-[280px] rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex-shrink-0 "
         >
           <img
             src={dokter.foto}
@@ -237,7 +241,7 @@ return (
     ].map((testi) => (
       <div
         key={testi.name}
-        className="p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-200 text-left"
+        className="p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border  text-left"
       >
         <div className="flex items-center space-x-4 mb-6">
           <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-primary/10">
