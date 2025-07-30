@@ -1,6 +1,11 @@
-import React, {Component,use,useEffect,useState} from "react";
+import React, {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
 export default function MedicalUpPage() {
+
+useEffect(() => {
+  const timer = setTimeout(() => setAnimate(true), 100); // Delay animasi
+  return () => clearTimeout(timer);
+}, []);
 
 return (
      <div className="font-sans">
@@ -19,22 +24,20 @@ return (
   <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
 
   {/* Konten */}
-  <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto">
-    {/* Text Side */}
-    <div className="text-center md:text-left md:w-1/2 text-white px-4">
-      <h2 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 drop-shadow-md">
-        Selamat Datang di <br /> Klinik Kecantikan Weiku
-      </h2>
-     <p className="text-white/90 text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
-  Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
-  Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda
-  <br />
-</p>
-    </div>
+  <div
+  className={`text-center md:text-left md:w-1/2 text-white px-4 transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+  <h2 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 drop-shadow-md">
+    Selamat Datang di <br /> Klinik Kecantikan Weiku
+  </h2>
+  <p className="text-white/90 text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
+    Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
+    Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda
+  </p>
+</div>
 
-    {/* Image Side */}
-    
-  </div>
     </section>
 
       {/* Why Choose Us */}
