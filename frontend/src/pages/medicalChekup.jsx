@@ -97,7 +97,11 @@ return (
       {/* Layanan Kami */}
       <section className="py-12 px-4  text-center">
   <h2 className="text-3xl font-bold mb-8 text-primary">Layanan Kami</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+   <div
+  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto  transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
 
     {[
       {
@@ -149,10 +153,14 @@ return (
 
       { /* Doktor kami */}
       <section className="p-8 bg-primary/5">
-  <h2 className="text-2xl font-bold text-center mb-6">Pekerja Kami</h2>
+  <h2 className="text-2xl font-bold text-center mb-6">Tenaga Medis</h2>
 
   {/* Scroll horizontal di mobile, tampil normal di desktop */}
-  <div className="overflow-x-auto lg:overflow-visible">
+    <div
+  className={`overflow-x-auto lg:overflow-visible  transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
     <div className="flex lg:justify-center gap-6 w-max lg:w-full px-4 py-2">
       {[
         {
@@ -198,7 +206,11 @@ return (
 
       {/* Jam Buka */}
       <section className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 text-center text-sm font-semibold tracking-wide rounded-xl shadow-inner">
-  <div className="max-w-md mx-auto">
+      <div
+  className={`max-w-md mx-auto  transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
     <p className="text-primary text-base">Kami buka setiap hari</p>
     <p className=" text-base">Kecuali hari Ahad dan tanggal Merah</p>
     <div className="mt-4 inline-block bg-primary/20 text-primary px-4 py-2 rounded-full shadow-sm animate-pulse">
@@ -210,9 +222,13 @@ return (
 
       {/* Testimoni */}
       <section className="p-8 text-center">
+        
   <h2 className="text-3xl font-extrabold mb-10 text-primary">Testimoni</h2>
-  
-  <div className="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto">
+        <div
+  className={`grid md:grid-cols-2 gap-10 max-w-7xl mx-auto transform transition-all duration-1000 ease-out ${
+    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
     {[
       {
         name: "Yunita Wildan",
