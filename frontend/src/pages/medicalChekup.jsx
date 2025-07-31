@@ -1,19 +1,40 @@
 import React, {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
+const [visibleSections, setVisibleSections] = useState({});
+
 export default function MedicalUpPage() {
 
-  const [animate, setAnimate] = useState(false);
-
+const sectionRefs = useRef({});
 
 useEffect(() => {
-  const timer = setTimeout(() => setAnimate(true), 100); // Delay animasi
-  return () => clearTimeout(timer);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleSections((prev) => ({
+            ...prev,
+            [entry.target.dataset.id]: true,
+          }));
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  Object.values(sectionRefs.current).forEach((section) => {
+    if (section) observer.observe(section);
+  });
+
+  return () => observer.disconnect();
 }, []);
+
 
 return (
      <div className="font-sans">
       {/* Hero Section */}
-   <section
+<section
+  ref={(el) => (sectionRefs.current["hero"] = el)}
+  data-id="hero"
   className="p-8 mt-10 bg-cover bg-center bg-fixed relative min-h-[600px] flex items-center"
   style={{
     backgroundImage: "url('/sa.jpg')",
@@ -27,11 +48,11 @@ return (
   <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
 
   {/* Konten */}
-  <div
-  className={`text-center md:text-left md:w-1/2  px-4 transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
->
+ <div
+    className={`text-center md:text-left md:w-1/2 px-4 transform transition-all duration-1000 ease-out ${
+      visibleSections["hero"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}
+  >
   <h2 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 drop-shadow-md">
     Selamat Datang di <br /> Klinik Kecantikan Weiku
   </h2>
@@ -44,18 +65,22 @@ return (
     </section>
 
       {/* Why Choose Us */}
-      <section className="p-8 text-center ">
+      <section ref={(el) => (sectionRefs.current["hero"] = el)}
+  data-id="hero" className="p-8 text-center ">
          <div
-  className={`max-w-6xl mx-auto  transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
+  className={`max-w-6xl mx-auto`}
 >
     <h3 className="text-lg font-semibold text-primary tracking-wide uppercase">Medical Checkup</h3>
     <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-12 ">
       Mengapa Memilih Kami untuk Perawatan Kesehatan Anda?
     </h2>
 
-    <div className="grid md:grid-cols-3 gap-12">
+    <div
+  className={`grid md:grid-cols-3 gap-12 transform transition-all duration-1000 ease-out ${
+    visibleSections["layanan"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+  }`}
+>
+
       {[
         {
           image: "/perawatan.jpeg",
@@ -95,12 +120,12 @@ return (
 
 
       {/* Layanan Kami */}
-      <section className="py-12 px-4  text-center">
+      <section ref={(el) => (sectionRefs.current["hero"] = el)}
+  data-id="hero" className="py-12 px-4  text-center">
   <h2 className="text-3xl font-bold mb-8 text-primary">Layanan Kami</h2>
    <div
-  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto  transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
+  className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto transform transition-all duration-1000 ease-out ${
+      visibleSections["hero"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
 >
 
     {[
@@ -152,14 +177,16 @@ return (
       </section>
 
       { /* Doktor kami */}
-      <section className="p-8 bg-primary/5">
+      <section 
+      ref={(el) => (sectionRefs.current["hero"] = el)}
+  data-id="hero" className="p-8 bg-primary/5">
   <h2 className="text-2xl font-bold text-center mb-6">Tenaga Medis</h2>
 
   {/* Scroll horizontal di mobile, tampil normal di desktop */}
     <div
   className={`overflow-x-auto lg:overflow-visible  transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
+      visibleSections["Tenaga Medis"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}
 >
     <div className="flex lg:justify-center gap-6 w-max lg:w-full px-4 py-2">
       {[
@@ -207,9 +234,7 @@ return (
       {/* Jam Buka */}
       <section className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 text-center text-sm font-semibold tracking-wide rounded-xl shadow-inner">
       <div
-  className={`max-w-md mx-auto  transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
+  className={`max-w-md mx-auto  `}
 >
     <p className="text-primary text-base">Kami buka setiap hari</p>
     <p className=" text-base">Kecuali hari Ahad dan tanggal Merah</p>
@@ -224,10 +249,9 @@ return (
       <section className="p-8 text-center">
         
   <h2 className="text-3xl font-extrabold mb-10 text-primary">Testimoni</h2>
-        <div
-  className={`grid md:grid-cols-2 gap-10 max-w-7xl mx-auto transform transition-all duration-1000 ease-out ${
-    animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  }`}
+  
+         <div
+  className={`grid md:grid-cols-2 gap-10 max-w-7xl mx-auto `}
 >
     {[
       {
