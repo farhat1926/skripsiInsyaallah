@@ -1,4 +1,5 @@
-import React, {useEffect,useState} from "react";
+import React, { useEffect, useState, useRef } from "react";
+
 import {Link} from "react-router-dom";
 
 export default function MedicalUpPage() {
@@ -258,7 +259,7 @@ return (
   
          <div
   className={`grid md:grid-cols-2 gap-10 max-w-7xl mx-auto transition-all duration-1000 ease-out ${
-    visibleSections["jam"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+    visibleSections["testimoni"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
 >
     {[
       {
