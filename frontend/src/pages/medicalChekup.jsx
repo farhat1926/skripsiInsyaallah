@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 import {Link} from "react-router-dom";
+import {motion} from "framer-motion";
 
 export default function MedicalUpPage() {
 const [visibleSections, setVisibleSections] = useState({});
@@ -36,7 +37,7 @@ return (
 <section
   ref={(el) => (sectionRefs.current["hero"] = el)}
   data-id="hero"
-  className="p-8 mt-10 bg-cover bg-center bg-fixed relative min-h-[600px] flex items-center"
+  className="relative min-h-[600px] p-8 mt-10 flex items-center justify-center text-center bg-cover bg-center bg-fixed"
   style={{
     backgroundImage: "url('/sa.jpg')",
     backgroundAttachment: "fixed",
@@ -44,26 +45,26 @@ return (
     backgroundSize: "cover",
   }}
 >
-
   {/* Overlay transparan gelap */}
-  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
+  <div className="absolute inset-0 backdrop-blur-sm bg-black/40 z-0"></div>
 
   {/* Konten */}
- <div
-    className={`text-center md:text-left md:w-1/2 px-4 transform transition-all duration-1000 ease-out ${
-      visibleSections["hero"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-    }`}
+  <motion.div
+    className="relative z-10 max-w-2xl px-4"
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 4, ease: "easeOut" }}
   >
-  <h2 className="font-extrabold text-5xl md:text-6xl leading-tight mb-6 drop-shadow-md">
-    Selamat Datang di <br /> Klinik Kecantikan Weiku
-  </h2>
-  <p className=" text-base md:text-lg font-light tracking-wide leading-relaxed max-w-lg drop-shadow-sm">
-    Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
-    Klinik kecantikan dan kesehatan weiku melayani berbagai kebutuhan medis Anda
-  </p>
-</div>
+    <h2 className="font-extrabold text-6xl md:text-7xl leading-tight mb-8 drop-shadow-2xl text-white">
+      Selamat Datang di Klinik Keperawatan Weiku
+    </h2>
+    <p className="text-base md:text-lg font-light tracking-wide leading-relaxed drop-shadow-2xl text-white">
+      Kami hadir untuk memberikan pelayanan kesehatan yang ramah, profesional, dan terpercaya.
+      Klinik kecantikan dan kesehatan Weiku melayani berbagai kebutuhan medis Anda
+    </p>
+  </motion.div>
+</section>
 
-    </section>
 
       {/* Why Choose Us */}
       <section ref={(el) => (sectionRefs.current["layanan"] = el)}
@@ -192,21 +193,21 @@ return (
     <div className="flex lg:justify-center gap-6 w-max lg:w-full px-4 py-2">
       {[
         {
-          nama: "dr. Salsabila Ramadhani",
+          nama: "dr. Hanif Nur Azizah",
           spesialis: "Dokter Umum",
           deskripsi:
             "Berpengalaman lebih dari 10 tahun dalam bidang pelayanan kesehatan umum dan pengobatan keluarga.",
-          foto: "/avatar.png",
+          foto: "/dr.jpg",
         },
         {
-          nama: "Uchro Wianto",
+          nama: "Uchro Wianto, AMK",
           spesialis: "Spesialis Akupuntur",
           deskripsi:
             "Menggabungkan pendekatan modern dan tradisional dalam terapi akupuntur untuk hasil yang maksimal.",
           foto: "/bapak.jpg",
         },
         {
-          nama: "Sri Mulyati",
+          nama: "Sri Mulyati,S.Kep.,Ners",
           spesialis: "Spesialis Luka & cek darah",
           deskripsi:
             "Ahli dalam penanganan luka dan prosedur pada pengecekan darah",

@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "framer-motion": "^12.23.12",
     "nodemailer": "^7.0.5",
     "telnet": "^0.0.1"
   },
   "devDependencies": {
     "vite": "^7.0.4"
   }
-  
 }

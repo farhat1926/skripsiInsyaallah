@@ -4,10 +4,6 @@ import toast from 'react-hot-toast'
 import {io} from 'socket.io-client'
 import { useNavigate } from 'react-router-dom';
 
-const isDev = import.meta.env.DEV;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const SOCKET_BASE_URL = import.meta.env.VITE_SOCKET_BASE_URL;
-
 
 export const useAuthStore = create((set,get) => ({
     authUser: null,
@@ -96,7 +92,7 @@ connectSocket: () => {
 
   console.log("Connecting socket with userId:", authUser?._id);
   
-  const socket = io(SOCKET_BASE_URL, {
+  const socket = io("http://localhost:5001", {
     auth: { userId: authUser._id },  // ✅ INI HARUS MASUK
     transports: ['websocket'],
     withCredentials: true,
