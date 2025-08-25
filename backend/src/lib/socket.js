@@ -1,32 +1,31 @@
-import {Server} from 'socket.io'
-import http from 'http'
-import express from 'express'
+import { Server } from "socket.io";
+import http from "http";
+import express from "express";
+import cookie from "cookie";
+import jwt from "jsonwebtoken";
+import User from "../models/user.model.js";
 
-const app = express()
+const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: [
-      "http://localhost:5173"
+      "http://localhost:5173",
+      "https://klinikweiku.com"
     ],
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 
+app.set("io", io);
 
-
-app.set("io", io)
-//use to store online users
-const userSocketMap = {}
+// store online users
+const userSocketMap = {};
 export function getReceiverSocketId(userId) {
-    return userSocketMap[userId]
+  return userSocketMap[userId];
 }
-
-import cookie from "cookie";
-import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
 
 io.on("connection", async (socket) => {
   const cookies = cookie.parse(socket.handshake.headers.cookie || "");
@@ -46,7 +45,16 @@ io.on("connection", async (socket) => {
   } else {
     console.warn("No JWT cookie found in handshake");
   }
+
+  socket.on("disconnect", () => {
+    for (const [userId, socketId] of Object.entries(userSocketMap)) {
+      if (socketId === socket.id) {
+        delete userSocketMap[userId];
+        console.log(`User ${userId} disconnected`);
+        break;
+      }
+    }
+  });
 });
 
-
-export { io, app, server }
+export { io, app, server };

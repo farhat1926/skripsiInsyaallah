@@ -88,15 +88,10 @@ export const useAuthStore = create((set,get) => ({
 connectSocket: () => {
   const { authUser } = get();
   if (!authUser || get().socket?.connected) return;
-    console.log("authUser di connectSocket:", authUser); // 🔍 CEK DI SINI
 
-  console.log("Connecting socket with userId:", authUser?._id);
-  
-  const socket = io("http://localhost:5001", {
-    auth: { userId: authUser._id },  // ✅ INI HARUS MASUK
-    transports: ['websocket'],
+  const socket = io("https://klinikweiku.com", {
     withCredentials: true,
-    upgrade: false,
+    transports: ["websocket"], // langsung websocket, biar stabil
   });
 
   socket.on("connect", () => {
@@ -114,6 +109,7 @@ connectSocket: () => {
 
   set({ socket });
 },
+
     
     disconnectSocket: () => {
         if (get().socket) {

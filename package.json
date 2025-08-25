@@ -3,6 +3,7 @@
     "@heroicons/react": "^2.2.0",
     "framer-motion": "^12.23.12",
     "nodemailer": "^7.0.5",
+    "react-router-dom": "^6.30.1",
     "telnet": "^0.0.1"
   },
   "devDependencies": {

@@ -6,7 +6,8 @@ import { useAuthStore } from "../store/useAuthStore";
 import { io } from "socket.io-client";
 import { axiosInstance } from "../lib/axios";
 
-const socket = io("http://localhost:5001");
+const socket = io( "http://localhost:5173",
+      "https://klinikweiku.com");
 
 const AddFormCRUD = () => {
   const { authUser } = useAuthStore();
