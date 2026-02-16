@@ -31,23 +31,13 @@ const SignUpPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    if(userType =="Admin" && secretKey !== "perawat"){
-      e.preventDefault();
-      return toast.error("Invalid secret key")
-    } 
-    else if(userType === "karyawan" && secretKey !== "karyawan"){
-      e.preventDefault();
-      return toast.error("Invalid secret key")
-    }
-    else{
-      
-          e.preventDefault();
-          const success = validateForm()
-      
-          if(success===true) signup(formData)
-    }
+  e.preventDefault();
 
-  };
+  if (!validateForm()) return;
+
+  await signup({ ...formData, secretKey });
+};
+
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">

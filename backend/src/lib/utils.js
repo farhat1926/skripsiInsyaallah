@@ -1,4 +1,3 @@
-// lib/utils.js
 import jwt from "jsonwebtoken";
 
 export const generateToken = (userId, res) => {
@@ -8,10 +7,9 @@ export const generateToken = (userId, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: true,        // HARUS true karena pakai https
-    sameSite: "None",    // biar cookie bisa dikirim cross-site
-    path: "/",           // default root
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 hari
+    secure: false,        // karena masih localhost (HTTP)
+    sameSite: "lax",      // JANGAN None kalau tidak HTTPS
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
   return token;
